@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Build front-end
           command: |
-            cd fontend
+            cd frontend
             npm i 
             npm run build
       - save_cache:
