@@ -56,7 +56,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-dep]
+          keys: [backend-dep]
       - run:
           name: Back-end build
           command: |
@@ -73,7 +73,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-dep]
+          keys: [frontend-dep]
       - run:
           name: front-end test
           command: |
@@ -95,21 +95,33 @@ jobs:
             npm i
             npm run test
             
-#   scan-frontend:
-#     docker:
-#       # Docker image here
-#     steps:
-#       # Checkout code from git
-#       # Restore from cache
-#       # Your job code here
+  scan-frontend:
+    docker:
+      - image: cimg/node:13.8.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [frontend-dep]
+      - run:
+          name: frontend scan
+          command: |
+            cd frontend
+            npm i
+            npm audit --audit-level=critical
 
-#   scan-backend:
-#     docker:
-#       # Docker image here
-#     steps:
-#       # Checkout code from git
-#       # Restore from cache
-#       # Your job code here
+  scan-backend:
+    docker:
+      - image: cimg/node:13.8.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [backend-dep]
+      - run:
+          name: backend scan
+          command: |
+            cd frontend
+            npm i
+            npm audit --audit-level=critical
 
 #   deploy-infrastructure:
 #     docker:
