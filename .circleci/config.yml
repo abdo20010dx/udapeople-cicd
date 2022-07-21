@@ -25,8 +25,10 @@ commands:
       - run:
           name: install ansible
           command: |
-            curl -fsSL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-            sudo apt install -y nodejs
+            sudo apt update
+            sudo apt install software-properties-common
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible -y
 
   install_nodejs:
     description: Installing nodejs 13
@@ -34,10 +36,8 @@ commands:
       - run:
           name: install nodejs 13
           command: |
-            sudo apt update
-            sudo apt install software-properties-common
-            sudo add-apt-repository --yes --update ppa:ansible/ansible
-            sudo apt install ansible -y
+            curl -fsSL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+            sudo apt install -y nodejs
 
   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
@@ -257,6 +257,8 @@ jobs:
           command: |
             cd backend
             npm i
+            npm audit fix --force --audit-level=critical
+            npm audit fix --force --audit-level=critical
             npm run migrations > migrations_dump.txt
       - run:
           name: Send migration results to kvdb.io
