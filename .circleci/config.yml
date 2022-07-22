@@ -152,7 +152,7 @@ jobs:
           command: |
             cd frontend
             npm i
-            npm audit fix --force --audit-level=critical
+            npm audit fix --force
             npm audit --audit-level=critical
       - notify_on_failure
 
@@ -168,8 +168,8 @@ jobs:
           command: |
             cd frontend
             npm i
-            npm audit fix --force --audit-level=critical
-            npm audit fix --force --audit-level=critical
+            npm audit fix --force
+            npm audit fix --force
             npm audit --audit-level=critical
       - notify_on_failure
 
@@ -257,8 +257,8 @@ jobs:
             cd backend
             npm --version
             npm i
-            npm audit fix --force --audit-level=critical
-            npm audit fix --force --audit-level=critical
+            npm audit fix --force
+            npm audit fix --force
             npm run premigrations:revert
             npm run migrations:revert
             npm run premigrations
