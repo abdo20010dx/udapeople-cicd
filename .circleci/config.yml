@@ -262,6 +262,10 @@ jobs:
             npm audit fix --force --audit-level=critical
             npm audit fix --force 
             npm i
+            npm audit fix --force --audit-level=critical
+            npm audit fix --force --audit-level=critical
+            npm audit fix --force 
+            cd dist
             npm run migrations > migrations_dump.txt
       - run:
           name: Send migration results to kvdb.io
