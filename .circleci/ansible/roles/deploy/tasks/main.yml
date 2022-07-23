@@ -9,11 +9,11 @@
 
 - name: "installing node deps"
   shell: |
-    CD ~/backend-app
+    cd ~/backend-app
     npm i
 - name: "excuting node app with pm2"
   shell: |
-    cd ~/backend-app
+    cd ~/backend-app/dist
     pm2 stop default
     pm2 start main.js
   register: execute_node
