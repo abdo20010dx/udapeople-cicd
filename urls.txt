@@ -1,1 +1,5 @@
 https://github.com/abdo20010dx/udapeople-cicd
+udapeople-70d47dc.s3-website-us-west-2.amazonaws.com
+http://d1rycvm1qri4xi.cloudfront.net/#/employees
+http://44.224.136.176:3030/api/status
+http://18.237.19.28:9090/
